@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\AKHIIR\COBA LAGI\addictcloth\build\windows\CMakeFiles\1e5543876b5f33f093db5d45f8c12472\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{71ADB5FF-DBF6-39A1-83EA-C9B56872D160}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

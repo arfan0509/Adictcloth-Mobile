@@ -1,0 +1,28 @@
+^C:\AKHIIR\COBA LAGI\ADDICTCLOTH\BUILD\WINDOWS\CMAKEFILES\094F384CE73D5003B484DA913270FD27\FLUTTER_WINDOWS.DLL.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=C:\andro\flutter "PROJECT_DIR=C:\AKHIIR\COBA LAGI\addictcloth" FLUTTER_ROOT=C:\andro\flutter "FLUTTER_EPHEMERAL_DIR=C:\AKHIIR\COBA LAGI\addictcloth\windows\flutter\ephemeral" "PROJECT_DIR=C:\AKHIIR\COBA LAGI\addictcloth" "FLUTTER_TARGET=C:\AKHIIR\COBA LAGI\addictcloth\lib\pages\main.dart" DART_DEFINES=RkxVVFRFUl9XRUJfQVVUT19ERVRFQ1Q9dHJ1ZQ==,RkxVVFRFUl9XRUJfQ0FOVkFTS0lUX1VSTD1odHRwczovL3d3dy5nc3RhdGljLmNvbS9mbHV0dGVyLWNhbnZhc2tpdC80NWY2ZTAwOTExMGRmNGYzNGVjMmNmOTlmNjNjZjczYjcxYjdhNDIwLw== DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false "PACKAGE_CONFIG=C:\AKHIIR\COBA LAGI\addictcloth\.dart_tool\package_config.json" C:/andro/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\AKHIIR\COBA LAGI\ADDICTCLOTH\BUILD\WINDOWS\CMAKEFILES\E431C218EDEB05CB000C24FDDF033FB4\FLUTTER_ASSEMBLE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\AKHIIR\COBA LAGI\ADDICTCLOTH\WINDOWS\FLUTTER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/AKHIIR/COBA LAGI/addictcloth/windows" "-BC:/AKHIIR/COBA LAGI/addictcloth/build/windows" --check-stamp-file "C:/AKHIIR/COBA LAGI/addictcloth/build/windows/flutter/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

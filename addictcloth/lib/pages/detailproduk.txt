@@ -1,0 +1,218 @@
+import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+class DetailprodukWidget extends StatefulWidget {
+  const DetailprodukWidget({Key? key}) : super(key: key);
+
+  @override
+  _DetailprodukWidgetState createState() => _DetailprodukWidgetState();
+}
+
+class _DetailprodukWidgetState extends State<DetailprodukWidget> {
+  late DetailprodukModel _model;
+  late PageController _pageController;
+  int _pageViewCurrentIndex = 0;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => DetailprodukModel());
+    _pageController = PageController(initialPage: _pageViewCurrentIndex);
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        leading: InkWell(
+          onTap: () async {
+            Navigator.pop(context);
+          },
+          child: const Icon(
+            Icons.arrow_back_rounded,
+            color: Colors.black,
+            size: 24,
+          ),
+        ),
+        title: const Text(
+          'Detail Produk',
+          style: TextStyle(
+            fontFamily: 'Lexend Deca',
+            color: Color(0xFF151B1E),
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        actions: const [],
+        centerTitle: true,
+        elevation: 0,
+      ),
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    height: 400,
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 300,
+                      child: Stack(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 40),
+                            child: PageView(
+                              controller: _pageController,
+                              scrollDirection: Axis.horizontal,
+                              onPageChanged: (index) {
+                                setState(() {
+                                  _pageViewCurrentIndex = index;
+                                });
+                              },
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Image.asset(
+                                    'assets/images/baju04.jpg',
+                                    width: 300,
+                                    height: 200,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Image.asset(
+                                    'assets/images/baju4.jpg',
+                                    width: 300,
+                                    height: 200,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomLeft,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(16, 0, 0, 16),
+                              child: SmoothPageIndicator(
+                                controller: _pageController,
+                                count: 2,
+                                axisDirection: Axis.horizontal,
+                                onDotClicked: (index) {
+                                  _pageController.animateToPage(
+                                    index,
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.ease,
+                                  );
+                                },
+                                effect: const ExpandingDotsEffect(
+                                  expansionFactor: 3,
+                                  spacing: 8,
+                                  radius: 16,
+                                  dotWidth: 16,
+                                  dotHeight: 8,
+                                  dotColor: Colors.grey,
+                                  activeDotColor: Colors.black,
+                                  paintStyle: PaintingStyle.fill,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(16, 20, 0, 0),
+                    child: Text(
+                      'T-Shirt HYPE ASTRO - Addict Clothing',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(16, 12, 16, 16),
+                    child: Text(
+                      '• Black Colour\n• Local Size\n• Catton Combad 30s\n• DTF\n• Cash / Atm BCA\n• Bebas kirim daerah Kediri ( Luar Kediri bisa kirim via JNE/JNT )\n',
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
+                    child: Text(
+                      'Rp 95.000',
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 50, 0, 15),
+                      child: ElevatedButton.icon(
+                        onPressed: () {
+                          print('Add to Cart button pressed ...');
+                        },
+                        icon: const Icon(Icons.add_shopping_cart),
+                        label: const Text('Pre-Order'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF300054),
+                          minimumSize: const Size(150, 50),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class DetailprodukModel {
+  PageController? pageViewController;
+
+  void dispose() {
+    pageViewController?.dispose();
+  }
+}
+
+DetailprodukModel createModel(
+    BuildContext context, DetailprodukModel Function() modelCreator) {
+  return modelCreator();
+}
+
+
+
+
+https://api.whatsapp.com/send?phone=6285784258613&text=Hai%20Admin%20Addict%20Clothing%2C%0A%0ASaya%20punya%20permintaan%20spesial%20nih%20buat%20sablon%2Fjersey%20yang%20mau%20saya%20pesan.%20%0ASaya%20siap%20buat%20nyediain%20gambarnya%20dan%20diskusiin%20lebih%20detail%20soal%20desain%20yang%20saya%20mau.%0A%0ATerima%20kasih%20atas%20perhatiannya%20dan%20bantuannya.
